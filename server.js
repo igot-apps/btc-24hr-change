@@ -59,19 +59,22 @@ async function monitorBitcoinChange() {
                     }
                 }
 
+                let negativeChangeMessage = '';
+                let positiveChangeMessage = '';
+
                 if (isNegativeChange !== isNegative(previousChange)) {
                     console.log(btcData);
 
                     if (isNegativeChange) {
-                        console.log("Change in trend detected (Negative)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2) );
+                       negativeChangeMessage = "Change in trend detected (Negative)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2);
                     } else {
-                        console.log("Change in trend detected (Positive)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2) );
+                       positiveChangeMessage = "Change in trend detected (Positive)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2);
                     }
 
                     // Send email alert for trend change
                     await sendEmailAlert(
                         "Bitcoin Trend Change Alert",
-                        `Change in trend detected: Bitcoin price has turned ${(isNegativeChange ? 'Negative' : 'Positive')}`,
+                        `Change in trend detected: Bitcoin price has turned , ${(isNegativeChange ? negativeChangeMessage : positiveChangeMessage)}`,
                         "aagortey@gmail.com"
                     );
 
