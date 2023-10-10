@@ -61,9 +61,9 @@ async function monitorBitcoinChange() {
 
                 if (isNegativeChange !== isNegative(previousChange)) {
                     if (isNegativeChange) {
-                        console.log("Change in trend detected (Negative)!");
+                        console.log("Change in trend detected (Negative)!" + btcData);
                     } else {
-                        console.log("Change in trend detected (Positive)!");
+                        console.log("Change in trend detected (Positive)!" + btcData);
                     }
 
                     // Send email alert for trend change
