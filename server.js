@@ -60,10 +60,12 @@ async function monitorBitcoinChange() {
                 }
 
                 if (isNegativeChange !== isNegative(previousChange)) {
+                    console.log(btcData);
+
                     if (isNegativeChange) {
-                        console.log("Change in trend detected (Negative)!" + btcData);
+                        console.log("Change in trend detected (Negative)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2) );
                     } else {
-                        console.log("Change in trend detected (Positive)!" + btcData);
+                        console.log("Change in trend detected (Positive)! " + btcData.usd + ' ' + btcData.usd_24h_change.toFixed(2) );
                     }
 
                     // Send email alert for trend change
